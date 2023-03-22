@@ -14,7 +14,7 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     //create new game
     Game game(p1, p2);
     bool division;
-    if(p1.stacksize == 26 && p2.stacksize == 26){
+    if(p1.stacksize() == 26 && p2.stacksize() == 26){
         division = true;
     }else{
         division = false;
@@ -29,7 +29,7 @@ TEST_CASE("Amount of cards per player at the end of the game"){
     Game game(p1, p2);
     game.playAll();
     bool division;
-    if((p1.stacksize == 52 && p2.stacksize == 0) || (p2.stacksize == 52 && p1.stacksize == 0)){
+    if((p1.stacksize() == 52 && p2.stacksize() == 0) || (p2.stacksize() == 52 && p1.stacksize() == 0)){
         division = true;
     }else{
         division = false;
@@ -47,7 +47,7 @@ TEST_CASE("Amount of cards per player in the middle of the game"){
     game.playTurn();
     }
     bool division;
-    if(p1.stacksize + p2.stacksize == 52){
+    if(p1.stacksize() + p2.stacksize() == 52){
         division = true;
     }else{
         division = false;
@@ -62,7 +62,7 @@ TEST_CASE("Amount of cards after one turn"){
     Game game(p1, p2);
     game.playTurn();
     bool division;
-    if((p1.stacksize < 26 && p2.stacksize >26) || (p1.stacksize > 26 && p2.stacksize < 26)){
+    if((p1.stacksize() < 26 && p2.stacksize() >26) || (p1.stacksize() > 26 && p2.stacksize() < 26)){
         division = true;
     }else{
         division = false;
