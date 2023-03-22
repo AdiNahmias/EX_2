@@ -29,7 +29,8 @@ TEST_CASE("Amount of cards per player at the end of the game"){
     Game game(p1, p2);
     game.playAll();
     bool division;
-    if((p1.stacksize() == 52 && p2.stacksize() == 0) || (p2.stacksize() == 52 && p1.stacksize() == 0)){
+    if((p1.stacksize() + p1.cardesTaken() == 52 && p2.stacksize() + p2.cardesTaken() == 0) 
+    || (p2.stacksize() + p1.cardesTaken() == 52 && p1.stacksize() + p2.cardesTaken() == 0)){
         division = true;
     }else{
         division = false;
@@ -37,6 +38,7 @@ TEST_CASE("Amount of cards per player at the end of the game"){
     CHECK(division);
 
 }
+
 TEST_CASE("Amount of cards per player in the middle of the game"){
     Player p1("Alice");
     Player p2("Bob");
