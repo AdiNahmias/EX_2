@@ -9,13 +9,32 @@ using namespace std;
 
 
 TEST_CASE("when we start the game"){
-    Player p1;
-    Player p2;
+    Player p1("Alice");
+    Player p2("Bob");
     //create new game
     Game game(p1, p2);
     bool division;
     if(p1.stacksize == 26 && p2.stacksize == 26){
         division = true;
+    }else{
+        division = false;
     }
     CHECK(division);
+}
+
+TEST_CASE("when we finish the game"){
+    Player p1("Alice");
+    Player p2("Bob");
+    //create new game
+    Game game(p1, p2);
+    bool division;
+    if((p1.stacksize == 52 && p2.stacksize == 0) || (p2.stacksize == 52 && p1.stacksize == 0)){
+        division = true;
+    }else{
+        division = false;
+    }
+    CHECK(division);
+
+
+
 }
