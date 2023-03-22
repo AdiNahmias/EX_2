@@ -22,7 +22,7 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     CHECK(division);
 }
 
-TEST_CASE("Amount of cards per player at the end of the game"){
+TEST_CASE("Check if someone win"){
     Player p1("Alice");
     Player p2("Bob");
     //create new game
@@ -38,7 +38,7 @@ TEST_CASE("Amount of cards per player at the end of the game"){
 
 }
 
-TEST_CASE("Amount of cards per player in the middle of the game"){
+TEST_CASE("Amount of cards per player after 5 turns"){
     Player p1("Alice");
     Player p2("Bob");
     //create new game
@@ -77,6 +77,8 @@ TEST_CASE("5"){
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
+    game.playAll();
+    if(p1.cardesTaken() == p2.cardesTaken())
     
 
 }
