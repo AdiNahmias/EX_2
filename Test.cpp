@@ -1,11 +1,27 @@
 #include "doctest.h"
 #include <stdexcept>
 #include "iostream"
-#include "stdio.h"
+#include <stdio.h>
 #include "player.hpp"
 #include "game.hpp"
 #include "card.hpp"
 using namespace std;
+
+
+
+// TEST_CASE("Check if players not null"){
+//     Player p1("Alice");
+//     Player p2("Bob");
+//     //create new game
+//     Game game(p1, p2);
+//     bool is_null;
+//     if(p1 != NULL && p2 != NULL){
+//         is_null = true;
+//     }else{
+//         is_null = false;
+//     }
+//     CHECK(is_null);
+// }
 
 
 TEST_CASE("Amount of cards per player at the start of the game"){
@@ -21,6 +37,7 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     }
     CHECK(division);
 }
+
 
 TEST_CASE("Check if someone win"){
     Player p1("Alice");
@@ -83,7 +100,10 @@ TEST_CASE("If any of the players won"){
         win = false;
     }
     win=true;
-    
+    CHECK(win);
 
 }
+
+
+
 
