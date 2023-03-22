@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include <stdexept>
+#include <stdexcept>
 #include "iostream"
 #include "stdio.h"
 #include "player.hpp"
