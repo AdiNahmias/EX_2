@@ -38,7 +38,7 @@ TEST_CASE("Amount of cards per player at the end of the game"){
 
 }
 TEST_CASE("Amount of cards per player in the middle of the game"){
-     Player p1("Alice");
+    Player p1("Alice");
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
@@ -53,7 +53,20 @@ TEST_CASE("Amount of cards per player in the middle of the game"){
         division = false;
     }
     CHECK(division);
+}
 
-
+TEST_CASE("Amount of cards after one turn"){
+    Player p1("Alice");
+    Player p2("Bob");
+    //create new game
+    Game game(p1, p2);
+    game.playTurn();
+    bool division;
+    if((p1.stacksize < 26 && p2.stacksize >26) || (p1.stacksize > 26 && p2.stacksize < 26)){
+        division = true;
+    }else{
+        division = false;
+    }
+    CHECK(division);
 
 }
