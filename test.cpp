@@ -72,13 +72,17 @@ TEST_CASE("Amount of cards after one turn"){
 
 }
 
-TEST_CASE("5"){
+TEST_CASE("If any of the players won"){
     Player p1("Alice");
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
     game.playAll();
-    if(p1.cardesTaken() == p2.cardesTaken())
+    bool win;
+    if(p1.cardesTaken() == p2.cardesTaken()){
+        win = false;
+    }
+    win=true;
     
 
 }
