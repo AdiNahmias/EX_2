@@ -62,13 +62,13 @@ TEST_CASE("Amount of cards after one turn"){
     //create new game
     Game game(p1, p2);
     game.playTurn();
-    bool division;
+    bool cards;
     if((p1.cardesTaken() > p2.cardesTaken()) || (p1.cardesTaken() < p2.cardesTaken())){
-        division = true;
+        cards = true;
     }else{
-        division = false;
+        cards = false;
     }
-    CHECK(division);
+    CHECK(cards);
 
 }
 
