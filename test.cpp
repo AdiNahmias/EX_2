@@ -62,7 +62,7 @@ TEST_CASE("Amount of cards after one turn"){
     Game game(p1, p2);
     game.playTurn();
     bool division;
-    if((p1.stacksize() < 26 && p2.stacksize() >26) || (p1.stacksize() > 26 && p2.stacksize() < 26)){
+    if((p1.stacksize() < 26 && p2.stacksize() > 26) || (p1.stacksize() > 26 && p2.stacksize() < 26)){
         division = true;
     }else{
         division = false;
@@ -70,3 +70,13 @@ TEST_CASE("Amount of cards after one turn"){
     CHECK(division);
 
 }
+
+TEST_CASE("5"){
+    Player p1("Alice");
+    Player p2("Bob");
+    //create new game
+    Game game(p1, p2);
+    
+
+}
+
