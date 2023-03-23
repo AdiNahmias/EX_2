@@ -9,19 +9,7 @@ using namespace std;
 
 
 
-// TEST_CASE("Check if players not null"){
-//     Player p1("Alice");
-//     Player p2("Bob");
-//     //create new game
-//     Game game(p1, p2);
-//     bool is_null;
-//     if(p1 != NULL && p2 != NULL){
-//         is_null = true;
-//     }else{
-//         is_null = false;
-//     }
-//     CHECK(is_null);
-// }
+
 
 
 TEST_CASE("Amount of cards per player at the start of the game"){
@@ -29,17 +17,14 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
-    bool division;
-    if(p1.stacksize() == 26 && p2.stacksize() == 26){
-        division = true;
-    }else{
-        division = false;
-    }
-    CHECK(division);
+    CHECK(p1.stacksize() == 26);
+    CHECK(p2.stacksize() == 26);
+    CHECK(p1.cardesTaken() == 0);
+    CHECK(p2.cardesTaken() == 0);
 }
 
 
-TEST_CASE("Check if someone win"){
+TEST_CASE("Checks if someone won"){
     Player p1("Alice");
     Player p2("Bob");
     //create new game
@@ -71,6 +56,8 @@ TEST_CASE("Amount of cards per player after 5 turns"){
         sum = false;
     }
     CHECK(sum);
+    CHECK(p1.stacksize() <= 21);
+    CHECK(p2.stacksize() <= 21);
 }
 
 TEST_CASE("Amount of cards after one turn"){
