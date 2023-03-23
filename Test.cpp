@@ -19,9 +19,15 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     CHECK(p2.cardesTaken() == 0);
 }
 
-TEST_CASE("Checking if the 2 players are not the same player"){
+TEST_CASE("Check if the players got there names"){
+    Player p1("Alice");
+    Player p2("Bob");
+    CHECK(p1.getname() == "Alice");
+    CHECK(p2.getname() == "Bob");
     
 }
+
+
 
 
 TEST_CASE("Amount of cards per player after 5 turns"){
@@ -51,14 +57,27 @@ TEST_CASE("Amount of cards after one turn"){
     Game game(p1, p2);
     game.playTurn();
     bool cards;
-    if((p1.cardesTaken() > p2.cardesTaken()) || (p1.cardesTaken() < p2.cardesTaken())){
+    if(p1.cardesTaken()>0 || p2.cardesTaken()>0){
+        if((p1.cardesTaken() > p2.cardesTaken()) || (p1.cardesTaken() < p2.cardesTaken())){
         cards = true;
+        }
     }else{
         cards = false;
     }
     CHECK(cards);
 
 }
+TEST_CASE("Checking whether the players are still playing after the game is over"){
+    Player p1("Alice");
+    Player p2("Bob");
+    //create new game
+    Game game(p1, p2);
+    game.playAll();
+    CHECK_THROW(game.playTurn());
+
+}
+
+
 TEST_CASE("Checking whether after a maximum of 26 turns the game is over"){
     Player p1("Alice");
     Player p2("Bob");

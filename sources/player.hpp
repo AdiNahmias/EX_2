@@ -16,6 +16,7 @@ public:
     Player(std::string player_name);
     int stacksize();
     int cardesTaken(); 
+    string getname();
       
    
 };
