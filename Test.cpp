@@ -19,6 +19,10 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     CHECK(p2.cardesTaken() == 0);
 }
 
+TEST_CASE("Checking if the 2 players are not the same player"){
+    
+}
+
 
 TEST_CASE("Amount of cards per player after 5 turns"){
     Player p1("Alice");
@@ -70,6 +74,7 @@ TEST_CASE("Checking whether after a maximum of 26 turns the game is over"){
     CHECK(p2.stacksize() == 0);
     CHECK(count <= 26);
 }
+
 
 TEST_CASE("Checks if someone won"){
     Player p1("Alice");
