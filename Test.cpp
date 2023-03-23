@@ -8,10 +8,6 @@
 using namespace std;
 
 
-
-
-
-
 TEST_CASE("Amount of cards per player at the start of the game"){
     Player p1("Alice");
     Player p2("Bob");
@@ -23,22 +19,6 @@ TEST_CASE("Amount of cards per player at the start of the game"){
     CHECK(p2.cardesTaken() == 0);
 }
 
-
-TEST_CASE("Checks if someone won"){
-    Player p1("Alice");
-    Player p2("Bob");
-    //create new game
-    Game game(p1, p2);
-    game.playAll();
-    bool win;
-    if(p1.stacksize() == 0 && p2.stacksize() == 0) {
-        win = true;
-    }else{
-        win = false;
-    }
-    CHECK(win);
-
-}
 
 TEST_CASE("Amount of cards per player after 5 turns"){
     Player p1("Alice");
@@ -75,21 +55,39 @@ TEST_CASE("Amount of cards after one turn"){
     CHECK(cards);
 
 }
+TEST_CASE("Checking whether after a maximum of 26 turns the game is over"){
+    Player p1("Alice");
+    Player p2("Bob");
+    //create new game
+    Game game(p1, p2);
+    int count = 0;
+    while (p1.stacksize() > 0 && count <= 26){
 
-TEST_CASE("If any of the players won"){
+        game.playTurn();
+        count++;
+    }
+    CHECK(p1.stacksize() == 0);
+    CHECK(p2.stacksize() == 0);
+    CHECK(count <= 26);
+}
+
+TEST_CASE("Checks if someone won"){
     Player p1("Alice");
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
     game.playAll();
     bool win;
-    if(p1.cardesTaken() == p2.cardesTaken()){
+    if(p1.stacksize() == 0 && p2.stacksize() == 0 && p1.cardesTaken() != p2.cardesTaken()) {
+        win = true;
+    }else{
         win = false;
     }
-    win=true;
     CHECK(win);
 
 }
+
+
 
 
 
