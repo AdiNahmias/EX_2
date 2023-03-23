@@ -56,25 +56,35 @@ TEST_CASE("Amount of cards after one turn"){
     //create new game
     Game game(p1, p2);
     game.playTurn();
-    bool cards;
-    if(p1.cardesTaken()>0 || p2.cardesTaken()>0){
-        if((p1.cardesTaken() > p2.cardesTaken()) || (p1.cardesTaken() < p2.cardesTaken())){
-        cards = true;
-        }
-    }else{
-        cards = false;
+    if(p1.cardesTaken() > 0){
+        CHECK(p2.cardesTaken() == 0);
     }
-    CHECK(cards);
+    if(p2.cardesTaken() > 0){
+        CHECK(p1.cardesTaken() == 0);
+    }else{
+        //cheking if we finish the game after one turn
+        CHECK(((p1.stacksize() == 0) || (p2.stacksize() == 0)));
+    } 
 
 }
+
 TEST_CASE("Checking whether the players are still playing after the game is over"){
     Player p1("Alice");
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
     game.playAll();
-    CHECK_THROW(game.playTurn());
+    CHECK_THROWS(game.playTurn());
 
+}
+
+TEST_CASE("Checking the amount of cards for each player before creating a game"){
+    Player p1("Alice");
+    Player p2("Bob");
+    CHECK(p1.stacksize() == 0);
+    CHECK(p2.stacksize() == 0);
+    CHECK(p1.cardesTaken() == 0);
+    CHECK(p2.cardesTaken() == 0);
 }
 
 
