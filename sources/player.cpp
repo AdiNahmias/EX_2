@@ -5,8 +5,8 @@
 using namespace std;
 
 
-
-Player::Player(std::string player_name){
+//constructor
+Player::Player(string player_name){
     this->my_player = player_name; 
 }  
 
@@ -15,7 +15,7 @@ string Player::getname(){
 } 
 
 
-//prints the amount of cards left. should be 21 but can be less if a draw was played    
+//prints the amount of cards left.    
 int  Player::stacksize(){
     return 1;
 }

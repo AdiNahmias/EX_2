@@ -29,10 +29,13 @@ void Game::printWiner(){
 void Game::printLog(){
 
 }
-//for each player prints basic statistics: win rate, cards won, <other stats you want to print>. Also print the draw rate and amount of draws that happand. (draw within a draw counts as 2 draws. )
+//for each player prints basic statistics: 
+// win rate, cards won, <other stats you want to print>
+// Also print the draw rate and amount of draws that happand.
 void Game::printStats(){
 
 }
+//play one turn
 void Game::playTurn(){
 
 }

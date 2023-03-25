@@ -3,17 +3,16 @@
 #include "iostream"
 #include "stdio.h"
 using namespace std;
-
 #include <string>
 
 class Player {
 
 private:
-    std::string my_player;
+    string my_player;
 
 public:
     Player(){}
-    Player(std::string player_name);
+    Player(string player_name);
     int stacksize();
     int cardesTaken(); 
     string getname();
