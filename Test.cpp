@@ -121,7 +121,7 @@ TEST_CASE("Checking if the game is over after playALL()"){
     Game game(p1, p2);
     game.playAll();
     CHECK(p1.stacksize() == 0);
-    CHECK(P2.stacksize() == 0);
+    CHECK(p2.stacksize() == 0);
 
 }
 
