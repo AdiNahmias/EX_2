@@ -82,15 +82,15 @@ TEST_CASE("Checking whether after a maximum of 26 turns the game is over"){
     Player p2("Bob");
     //create new game
     Game game(p1, p2);
-    int count = 0;
-    while (p1.stacksize() > 0 && count <= 26){
+    int turns = 0;
+    while (p1.stacksize() > 0 && turns <= 26){
 
         game.playTurn();
-        count++;
+        turns++;
     }
     CHECK(p1.stacksize() == 0);
     CHECK(p2.stacksize() == 0);
-    CHECK(count <= 26);
+    CHECK(turns <= 26);
 }
 
 
@@ -113,6 +113,18 @@ TEST_CASE("Checks if someone won"){
     CHECK(win);
 
 }
+
+TEST_CASE("Checking if the game is over after playALL()"){
+    Player p1("Alice");
+    Player p2("Bob");
+    //create new game
+    Game game(p1, p2);
+    game.playAll();
+    CHECK(p1.stacksize() == 0);
+    CHECK(P2.stacksize() == 0);
+
+}
+
 
 
 
