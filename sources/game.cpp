@@ -106,13 +106,8 @@ void Game::printStats(){
 }
 //play one turn
 void Game::playTurn(){
-    card card1 = this->p1->player_Stack.pop_back();
-    card card2 = this->p2->player_Stack.pop_back();
-    if(card1.num > card2.num){
-        // p1 cardes taken + 2
-        this->p1->cardesTaken.push_back(card1);
-        this->p1->cardesTaken.push_back(card2);
+
         
-    }
+    
 
 }
