@@ -45,9 +45,9 @@ void Game::shuffleCardStack(vector<Card>& vec) {
 void Game::division_card(Player p1, Player p2, vector<Card>& vec){
     for(size_t i= 0; i < vec.size(); i++){
         if(i % 2 == 0){
-            this->p1->get_card_to_stack(vec[i]);
+            this->p1->set_card_to_stack(vec[i]);
         }else{
-            this->p2->get_card_to_stack(vec[i]);
+            this->p2->set_card_to_stack(vec[i]);
         }
     }
 }
@@ -106,6 +106,39 @@ void Game::printStats(){
 }
 //play one turn
 void Game::playTurn(){
+//need to check if the players have cards in therh stack
+    Card arr1[26];
+    Card arr2[26];
+    int i = 0;
+
+    Card card1 = this->p1->get_card_from_stack();
+    Card card2 = this->p2->get_card_from_stack();
+    if(c1.getnum() > c2.getnum()){
+        this->p1->cardesTaken_stack(card1);
+        this->p1->cardesTaken_stack(card2);
+    }
+    if(c1.getnum() < c2.getnum()){
+        this->p2->cardesTaken_stack(card1);
+        this->p2->cardesTaken_stack(card2);
+    }
+    //if the players put the same number card
+    else{
+        while(card1.getnum() == card2.getnum()){
+        arr1[i] = card1;
+        arr2[i] = card2;
+        i++;
+        //reversed card
+        arr1[i] = this->p1->get_card_from_stack();
+        arr2[i] = this->p2->get_card_from_stack();
+        card1 = this->p1->get_card_from_stack();
+        card2 = this->p2->get_card_from_stack();
+        }
+
+        }
+
+    }
+
+
 
         
     

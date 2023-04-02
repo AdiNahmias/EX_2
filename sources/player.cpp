@@ -13,10 +13,20 @@ Player::Player(string player_name){
     
 } 
 
-void Player::get_card_to_stack(Card c){
+Card Player::get_card_from_stack(){
+    return this->player_Stack.push_back();
+}
+
+void Player::set_card_to_stack(Card c){
 
     this->player_Stack.push_back(c);
 }
+
+void Player::set_card_to_cardesTaken(Card c){
+
+    this->cardesTaken_stack.push_back(c);
+}
+
 
 void Player::print_card_stack_player() {
     for (size_t i = 0; i < player_Stack.size(); i++) {

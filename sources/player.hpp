@@ -24,6 +24,7 @@ public:
     string getname();
     void print_card_stack_player();
     void get_card_to_stack(Card c);
+    Card get_card_from_stack();
       
    
 };
