@@ -27,6 +27,7 @@ int main() {
   game.playTurn();
   //game.playTurn();
   game.printStats();
+  game.printWiner();
   
   
 

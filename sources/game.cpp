@@ -89,9 +89,16 @@ void Game::playAll(){
 }
 // prints the name of the winning player
 void Game::printWiner(){
-
+    if(this->p1->stacksize() == 0 && this->p2->stacksize() == 0){
+        if(this->p1->cardesTaken() > this->p2->cardesTaken()){
+            std::cout << this->p1->getname()<< " is the WINNER of the game!! " << std::endl; 
+        }else{
+            std::cout << this->p2->getname()<< " is the WINNER of the game!! "  << std::endl; 
+        }
+    }else{
+        std::cout << "--------ERROR: THE GAME IS NOT OVER---------" << std::endl;
+    }
 }
-
 // // prints all the turns played one line per turn (same format as game.printLastTurn())
 void Game::printLog(){
 
