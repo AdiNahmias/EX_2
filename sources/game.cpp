@@ -16,12 +16,10 @@ void Game::print_card_stack(vector <Card> &vec) {
 
 void Game::reset_card_stack(vector <Card> &vec){
     for(int i=1; i<=13; i++){
-        vec.push_back(Card(i,"heart"));
-        
+        vec.push_back(Card(i,"heart"));  
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(i,"diamond"));
-        
+        vec.push_back(Card(i,"diamond"));   
     }
     for(int i = 1; i<=13; i++){
         vec.push_back(Card(i,"spades"));
