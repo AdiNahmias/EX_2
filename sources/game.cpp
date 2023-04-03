@@ -142,8 +142,10 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
     Card card1 = this->p1->get_card_from_stack();
     Card card2 = this->p2->get_card_from_stack();
 
-    string turn = this->p1->getname()+":"+card1.getshape();
-    std::cout <<turn<< std::endl;
+    string c1 = this->p1->getname()+" : "+card1.getnum_string()+" of "+card1.getshape();
+    string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
+    // std::cout <<turn1<< std::endl;
+    // std::cout <<turn2<< std::endl;
 
     if(card1.getnum() > card2.getnum()){
         this->p1->set_card_to_cardesTaken(card1);
@@ -151,6 +153,10 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         std::cout << "--------p1 won in this turn---------" << std::endl;
         std::cout << "--------p1 cards Taken---------" << std::endl;
         this->p1->print_cardesTaken();
+        string c3 = this->p1->getname()+" took the cards in this turn";
+
+        string turn = c1 + " , "+ c2 + " - " + c3;
+        std::cout <<turn<< std::endl;
         return;
     }
     if(card1.getnum() < card2.getnum()){
@@ -159,8 +165,14 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         std::cout << "--------p2 won in this turn---------" << std::endl;
         std::cout << "--------p2 cards Taken---------" << std::endl;
         this->p2->print_cardesTaken();
+        string c3 = this->p2->getname()+" took the cards in this turn";
+
+        string turn = c1 + " , "+ c2 + " - " + c3;
+        std::cout <<turn<< std::endl;
         return;
     }
+    
+
     //if the players put the same number card
     else{
         while((card1.getnum() == card2.getnum()) && (this->p1->stacksize()> 0)){
