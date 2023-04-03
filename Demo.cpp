@@ -10,7 +10,6 @@
 #include <stdexcept>
 using namespace std;
 
-#include <vector>
 
 #include "sources/player.hpp"
 #include "sources/game.hpp"
@@ -25,7 +24,7 @@ int main() {
 
   Game game(p1,p2); 
   game.playTurn();
-  //game.playTurn();
+  game.playAll();
   game.printStats();
   game.printWiner();
   

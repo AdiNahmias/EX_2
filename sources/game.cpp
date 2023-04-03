@@ -59,9 +59,9 @@ Game::Game(Player &p1, Player &p2){
     std::cout << "--------before shuffle---------" << std::endl;
     print_card_stack(this->vec);
     //shuffle cards in the Stack
-    //shuffleCardStack(this->vec);
-    //std::cout << "--------after shuffle---------" << std::endl;
-    //print_card_stack(this->vec);
+    shuffleCardStack(this->vec);
+    std::cout << "--------after shuffle---------" << std::endl;
+    print_card_stack(this->vec);
 
     if (vec.size() < 52) {
     std::cout << "Error: Not enough cards in the deck\n";
@@ -85,8 +85,11 @@ void Game::printLastTurn() {
 
 //playes the game untill the end
 void Game::playAll(){
-
+    while((this->p1->stacksize() != 0) && (this->p2->stacksize() != 0)){
+        playTurn();
+    }
 }
+
 // prints the name of the winning player
 void Game::printWiner(){
     if(this->p1->stacksize() == 0 && this->p2->stacksize() == 0){
