@@ -100,7 +100,9 @@ void Game::printLog(){
 // win rate, cards won, <other stats you want to print>
 // Also print the draw rate and amount of draws that happand.
 void Game::printStats(){
-
+    std::cout << this->p1->getname()<< " has won " << this->p1->cardesTaken() << " cards" << std::endl;
+    std::cout << this->p2->getname()<< " has won " << this->p2->cardesTaken() << " cards" << std::endl;
+    std::cout <<"Each player has " << this->p1->stacksize() << " cards left" << std::endl;
 }
 //play one turn
 void Game::playTurn(){

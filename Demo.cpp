@@ -26,6 +26,7 @@ int main() {
   Game game(p1,p2); 
   game.playTurn();
   //game.playTurn();
+  game.printStats();
   
   
 
