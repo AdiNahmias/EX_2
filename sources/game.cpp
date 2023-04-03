@@ -96,9 +96,10 @@ Game::Game(Player &p1, Player &p2){
 
 //print the last turn stats
 void Game::printLastTurn() {
-    
-
- }
+    string str = "";
+    str = this->turns.back();
+    std::cout << str << std::endl;
+}
 
 //playes the game untill the end
 void Game::playAll(){
