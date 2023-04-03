@@ -16,18 +16,18 @@ void Game::print_card_stack(vector <Card> &vec) {
 
 void Game::reset_card_stack(vector <Card> &vec){
     for(int i=1; i<=13; i++){
-        vec.push_back(Card(1,"heart"));
+        vec.push_back(Card(i,"heart"));
         
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(1,"diamond"));
+        vec.push_back(Card(i,"diamond"));
         
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(1,"spades"));
+        vec.push_back(Card(i,"spades"));
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(1,"clubs"));
+        vec.push_back(Card(i,"clubs"));
     }
 
  }
@@ -159,7 +159,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         arr2[i] = card2;
         //the 2 cards are not the same
         if(this->p1->stacksize()== 0){
-            std::cout << "--------No one won in this turn---------" << std::endl;
+            std::cout << "--------ERROR: GAME OVER WITH DRAW---------" << std::endl;
             return;
         }
         if(card1.getnum() > card2.getnum()){
@@ -190,7 +190,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         }
     }
     }else{
-    std::cout << "--------There is no cards in players stack---------" << std::endl;
+    std::cout << "--------ERROR: There is no cards in players stack---------" << std::endl;
     return;
     }
 }
