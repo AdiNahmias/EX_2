@@ -24,6 +24,7 @@ int main() {
 
   Game game(p1,p2); 
   game.playTurn();
+  game.printLog();
 
   
   // game.playAll();

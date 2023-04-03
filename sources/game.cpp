@@ -73,12 +73,12 @@ Game::Game(Player &p1, Player &p2){
     reset_num_cards();
     //reset th stack card
     reset_card_stack(this->vec);
-    std::cout << "--------before shuffle---------" << std::endl;
-    print_card_stack(this->vec);
+    //std::cout << "--------before shuffle---------" << std::endl;
+    //print_card_stack(this->vec);
     //shuffle cards in the Stack
     shuffleCardStack(this->vec);
-    std::cout << "--------after shuffle---------" << std::endl;
-    print_card_stack(this->vec);
+    //std::cout << "--------after shuffle---------" << std::endl;
+    //print_card_stack(this->vec);
 
     if (vec.size() < 52) {
     std::cout << "Error: Not enough cards in the deck\n";
@@ -121,6 +121,11 @@ void Game::printWiner(){
 }
 //prints all the turns played one line per turn (same format as game.printLastTurn())
 void Game::printLog(){
+    string str = "";
+    for(size_t i = 0; i < this->turns.size(); i++){
+        str = turns[i];
+        std::cout << "TURN " << i+1 << " : " << str << std::endl;
+    }
 
 }
 //for each player prints basic statistics: 
@@ -157,6 +162,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
 
         string turn = c1 + " , "+ c2 + " - " + c3;
         std::cout <<turn<< std::endl;
+        this->turns.push_back(turn);
         return;
     }
     if(card1.getnum() < card2.getnum()){
@@ -169,6 +175,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
 
         string turn = c1 + " , "+ c2 + " - " + c3;
         std::cout <<turn<< std::endl;
+        this->turns.push_back(turn);
         return;
     }
     
