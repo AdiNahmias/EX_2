@@ -5,7 +5,8 @@
 #include "stdio.h"
 
 
-Card::Card(string num, string shape){
+Card::Card(int n, string num, string shape){
+    this->n = n;
     this->num = num;
     this->shape = shape;
  }
@@ -13,9 +14,12 @@ Card::Card(string num, string shape){
 string Card::getshape(){
     return this->shape;
 } 
-
-string Card::getnum(){
+string Card::getnum_string(){
     return this->num;
+}
+
+int Card::getnum(){
+    return this->n;
 } 
 
 

@@ -32,14 +32,14 @@ void Player::set_card_to_cardesTaken(Card c){
 void Player::print_card_stack_player() {
     for (size_t i = 0; i < player_Stack.size(); i++) {
         
-        std::cout << this->player_Stack.at(i).getnum()<< " of " << this->player_Stack.at(i).getshape() << std::endl;
+        std::cout << this->player_Stack.at(i).getnum_string()<< " of " << this->player_Stack.at(i).getshape() << std::endl;
     }
 }
 
 void Player::print_cardesTaken() {
     for (size_t i = 0; i < cardesTaken_stack.size(); i++) {
         
-        std::cout << this->cardesTaken_stack.at(i).getnum()<< " of " << this->cardesTaken_stack.at(i).getshape() << std::endl;
+        std::cout << this->cardesTaken_stack.at(i).getnum_string()<< " of " << this->cardesTaken_stack.at(i).getshape() << std::endl;
     }
 }
 

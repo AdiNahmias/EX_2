@@ -10,7 +10,7 @@
 
 void Game::print_card_stack(vector <Card> &vec) {
     for (size_t i = 0; i < vec.size(); i++) {
-        std::cout << vec.at(i).getnum()<< " of " << vec.at(i).getshape() << std::endl;
+        std::cout << vec.at(i).getnum_string()<< " of " << vec.at(i).getshape() << std::endl;
     }
 }
 
@@ -27,21 +27,21 @@ void Game::reset_num_cards(){
     this->num_cards[9] = "10";
     this->num_cards[10] = "Jack";
     this->num_cards[11] = "Queen";
-    this->num_cards[12] = "king";
+    this->num_cards[12] = "King";
 }
 
 void Game::reset_card_stack(vector <Card> &vec){
     for(int i=1; i<=13; i++){
-        vec.push_back(Card(this->num_cards[i-1],"Heart"));  
+        vec.push_back(Card(i,this->num_cards[i-1],"Heart"));  
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(this->num_cards[i-1],"Diamond"));   
+        vec.push_back(Card(i,this->num_cards[i-1],"Diamond"));   
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(this->num_cards[i-1],"Spades"));
+        vec.push_back(Card(i,this->num_cards[i-1],"Spades"));
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(this->num_cards[i-1],"Clubs"));
+        vec.push_back(Card(i,this->num_cards[i-1],"Clubs"));
     }
 
  }

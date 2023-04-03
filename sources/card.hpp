@@ -10,6 +10,7 @@ namespace ariel{
 class Card{
 
     private:
+        int n;
         string num;
         string shape;
         
@@ -17,9 +18,10 @@ class Card{
 
     public:
         Card(){}
-        Card(string num, string shape);
+        Card(int n, string num, string shape);
+        string getnum_string();
         string getshape();
-        string getnum();
+        int getnum();
         
        
 };
