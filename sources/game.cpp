@@ -10,22 +10,38 @@
 
 void Game::print_card_stack(vector <Card> &vec) {
     for (size_t i = 0; i < vec.size(); i++) {
-        std::cout << vec.at(i).getnum()<< "," << vec.at(i).getshape() << std::endl;
+        std::cout << vec.at(i).getnum()<< " of " << vec.at(i).getshape() << std::endl;
     }
+}
+
+void Game::reset_num_cards(){
+    this->num_cards[0] = "Ace";
+    this->num_cards[1] = "2";
+    this->num_cards[2] = "3";
+    this->num_cards[3] = "4";
+    this->num_cards[4] = "5";
+    this->num_cards[5] = "6";
+    this->num_cards[6] = "7";
+    this->num_cards[7] = "8";
+    this->num_cards[8] = "9";
+    this->num_cards[9] = "10";
+    this->num_cards[10] = "Jack";
+    this->num_cards[11] = "Queen";
+    this->num_cards[12] = "king";
 }
 
 void Game::reset_card_stack(vector <Card> &vec){
     for(int i=1; i<=13; i++){
-        vec.push_back(Card(i,"heart"));  
+        vec.push_back(Card(this->num_cards[i-1],"Heart"));  
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(i,"diamond"));   
+        vec.push_back(Card(this->num_cards[i-1],"Diamond"));   
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(i,"spades"));
+        vec.push_back(Card(this->num_cards[i-1],"Spades"));
     }
     for(int i = 1; i<=13; i++){
-        vec.push_back(Card(i,"clubs"));
+        vec.push_back(Card(this->num_cards[i-1],"Clubs"));
     }
 
  }
@@ -54,6 +70,7 @@ void Game::division_card(Player p1, Player p2, vector<Card>& vec){
 Game::Game(Player &p1, Player &p2){
     this->p1 = &p1;
     this->p2 = &p2;
+    reset_num_cards();
     //reset th stack card
     reset_card_stack(this->vec);
     std::cout << "--------before shuffle---------" << std::endl;
@@ -102,7 +119,7 @@ void Game::printWiner(){
         std::cout << "--------ERROR: THE GAME IS NOT OVER---------" << std::endl;
     }
 }
-// prints all the turns played one line per turn (same format as game.printLastTurn())
+//prints all the turns played one line per turn (same format as game.printLastTurn())
 void Game::printLog(){
 
 }
@@ -122,10 +139,12 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
     Card arr1[26];
     Card arr2[26];
     int i = 0;
-    
-
     Card card1 = this->p1->get_card_from_stack();
     Card card2 = this->p2->get_card_from_stack();
+
+    string turn = this->p1->getname()+":"+card1.getshape();
+    std::cout <<turn<< std::endl;
+
     if(card1.getnum() > card2.getnum()){
         this->p1->set_card_to_cardesTaken(card1);
         this->p1->set_card_to_cardesTaken(card2);

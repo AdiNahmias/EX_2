@@ -10,16 +10,16 @@ namespace ariel{
 class Card{
 
     private:
-        int num;
+        string num;
         string shape;
         
 
 
     public:
         Card(){}
-        Card(int num, string shape);
+        Card(string num, string shape);
         string getshape();
-        int getnum();
+        string getnum();
         
        
 };
