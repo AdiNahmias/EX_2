@@ -24,12 +24,14 @@ int main() {
 
   Game game(p1,p2); 
   game.playTurn();
-  game.printLog();
+  game.playTurn();
+  
 
   
-  // game.playAll();
-  // game.printStats();
-  // game.printWiner();
+  game.playAll();
+  game.printLog();
+  game.printStats();
+  game.printWiner();
   
   
 
