@@ -118,22 +118,27 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
     if(card1.getnum() > card2.getnum()){
         this->p1->set_card_to_cardesTaken(card1);
         this->p1->set_card_to_cardesTaken(card2);
+        std::cout << "--------p1 won in this turn---------" << std::endl;
     }
     if(card1.getnum() < card2.getnum()){
         this->p2->set_card_to_cardesTaken(card1);
         this->p2->set_card_to_cardesTaken(card2);
+        std::cout << "--------p2 won in this turn---------" << std::endl;
     }
     //if the players put the same number card
     else{
         while((card1.getnum() == card2.getnum()) && (this->p1->stacksize()!= 0) && (this->p2->stacksize()!= 0)){
+        std::cout << "--------p1 and p2 have the same card---------" << std::endl;
         //put the same card in the arr
         arr1[i] = card1;
         arr2[i] = card2;
         i++;
         //put the close cards in the arr
+        std::cout << "--------p1 and p2 put 2 close cards---------" << std::endl;
         arr1[i] = this->p1->get_card_from_stack();
         arr2[i] = this->p2->get_card_from_stack();
         //again open cards
+        std::cout << "--------p1 and p2 put 2 open cards---------" << std::endl;
         //if the 2 cards is the same we going back to the beginning of while
         card1 = this->p1->get_card_from_stack();
         card2 = this->p2->get_card_from_stack();
@@ -144,6 +149,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         //the 2 cards are not the same
         if(card1.getnum() > card2.getnum()){
             //player1 takes all the cards in the 2 arr
+            std::cout << "--------p1 won in this turn---------" << std::endl;
             for(size_t k = 0; k < i; k++){
                 this->p1->set_card_to_cardesTaken(arr1[k]);
             }
@@ -152,6 +158,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             }
         }if(card1.getnum() < card2.getnum()){
             //player2 takes all the cards in the 2 arr
+            std::cout << "--------p2 won in this turn---------" << std::endl;
             for(size_t k = 0; k < i; k++){
                 this->p2->set_card_to_cardesTaken(arr1[k]);
             }
