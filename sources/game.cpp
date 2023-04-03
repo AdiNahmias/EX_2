@@ -107,40 +107,66 @@ void Game::printStats(){
 //play one turn
 void Game::playTurn(){
 //need to check if the players have cards in therh stack
+if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
+
     Card arr1[26];
     Card arr2[26];
     int i = 0;
 
     Card card1 = this->p1->get_card_from_stack();
     Card card2 = this->p2->get_card_from_stack();
-    if(c1.getnum() > c2.getnum()){
-        this->p1->cardesTaken_stack(card1);
-        this->p1->cardesTaken_stack(card2);
+    if(card1.getnum() > card2.getnum()){
+        this->p1->set_card_to_cardesTaken(card1);
+        this->p1->set_card_to_cardesTaken(card2);
     }
-    if(c1.getnum() < c2.getnum()){
-        this->p2->cardesTaken_stack(card1);
-        this->p2->cardesTaken_stack(card2);
+    if(card1.getnum() < card2.getnum()){
+        this->p2->set_card_to_cardesTaken(card1);
+        this->p2->set_card_to_cardesTaken(card2);
     }
     //if the players put the same number card
     else{
-        while(card1.getnum() == card2.getnum()){
+        while((card1.getnum() == card2.getnum()) && (this->p1->stacksize()!= 0) && (this->p2->stacksize()!= 0)){
+        //put the same card in the arr
         arr1[i] = card1;
         arr2[i] = card2;
         i++;
-        //reversed card
+        //put the close cards in the arr
         arr1[i] = this->p1->get_card_from_stack();
         arr2[i] = this->p2->get_card_from_stack();
+        //again open cards
+        //if the 2 cards is the same we going back to the beginning of while
         card1 = this->p1->get_card_from_stack();
         card2 = this->p2->get_card_from_stack();
+        i++;
+        }//end while
+        arr1[i] = card1;
+        arr2[i] = card2;
+        //the 2 cards are not the same
+        if(card1.getnum() > card2.getnum()){
+            //player1 takes all the cards in the 2 arr
+            for(size_t k = 0; k < i; k++){
+                this->p1->set_card_to_cardesTaken(arr1[k]);
+            }
+            for(size_t k = 0; k < i; k++){
+                this->p1->set_card_to_cardesTaken(arr2[k]);
+            }
+        }if(card1.getnum() < card2.getnum()){
+            //player2 takes all the cards in the 2 arr
+            for(size_t k = 0; k < i; k++){
+                this->p2->set_card_to_cardesTaken(arr1[k]);
+            }
+            for(size_t k = 0; k < i; k++){
+                this->p2->set_card_to_cardesTaken(arr2[k]);
+            }
+        }else{
+            //we brake the while because the players finish there stack
+            std::cout << "--------No one won in this turn---------" << std::endl;
         }
-
         }
+    }else{
 
+    return;
     }
-
-
-
-        
-    
-
 }
+   
+

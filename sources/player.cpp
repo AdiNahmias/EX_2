@@ -14,11 +14,11 @@ Player::Player(string player_name){
 } 
 
 Card Player::get_card_from_stack(){
-    return this->player_Stack.push_back();
+    Card c = this->player_Stack.front();
+    return c;
 }
 
 void Player::set_card_to_stack(Card c){
-
     this->player_Stack.push_back(c);
 }
 

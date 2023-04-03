@@ -23,7 +23,8 @@ public:
     int cardesTaken(); 
     string getname();
     void print_card_stack_player();
-    void get_card_to_stack(Card c);
+    void set_card_to_stack(Card c);
+    void set_card_to_cardesTaken(Card c);
     Card get_card_from_stack();
       
    
