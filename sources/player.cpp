@@ -14,7 +14,8 @@ Player::Player(string player_name){
 } 
 
 Card Player::get_card_from_stack(){
-    Card c = this->player_Stack.front();
+    Card c = this->player_Stack.back();
+    this->player_Stack.pop_back();
     return c;
 }
 
@@ -32,6 +33,13 @@ void Player::print_card_stack_player() {
     for (size_t i = 0; i < player_Stack.size(); i++) {
         
         std::cout << this->player_Stack.at(i).getnum()<< "," << this->player_Stack.at(i).getshape() << std::endl;
+    }
+}
+
+void Player::print_cardesTaken() {
+    for (size_t i = 0; i < cardesTaken_stack.size(); i++) {
+        
+        std::cout << this->cardesTaken_stack.at(i).getnum()<< "," << this->cardesTaken_stack.at(i).getshape() << std::endl;
     }
 }
 

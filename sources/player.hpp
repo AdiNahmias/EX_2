@@ -26,6 +26,7 @@ public:
     void set_card_to_stack(Card c);
     void set_card_to_cardesTaken(Card c);
     Card get_card_from_stack();
+    void print_cardesTaken(); 
       
    
 };

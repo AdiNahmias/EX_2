@@ -24,6 +24,10 @@ int main() {
   Player p2("Bob");
 
   Game game(p1,p2); 
+  game.playTurn();
+  game.playTurn();
+  
+  
 
 
 

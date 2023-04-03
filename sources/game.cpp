@@ -119,11 +119,17 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         this->p1->set_card_to_cardesTaken(card1);
         this->p1->set_card_to_cardesTaken(card2);
         std::cout << "--------p1 won in this turn---------" << std::endl;
+        std::cout << "--------p1 cards Taken---------" << std::endl;
+        this->p1->print_cardesTaken();
+        return;
     }
     if(card1.getnum() < card2.getnum()){
         this->p2->set_card_to_cardesTaken(card1);
         this->p2->set_card_to_cardesTaken(card2);
         std::cout << "--------p2 won in this turn---------" << std::endl;
+        std::cout << "--------p2 cards Taken---------" << std::endl;
+        this->p2->print_cardesTaken();
+        return;
     }
     //if the players put the same number card
     else{
@@ -156,6 +162,9 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             for(size_t k = 0; k < i; k++){
                 this->p1->set_card_to_cardesTaken(arr2[k]);
             }
+            std::cout << "--------p1 cards Taken---------" << std::endl;
+            this->p1->print_cardesTaken();
+            return;
         }if(card1.getnum() < card2.getnum()){
             //player2 takes all the cards in the 2 arr
             std::cout << "--------p2 won in this turn---------" << std::endl;
@@ -165,13 +174,17 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             for(size_t k = 0; k < i; k++){
                 this->p2->set_card_to_cardesTaken(arr2[k]);
             }
+            std::cout << "--------p2 cards Taken---------" << std::endl;
+            this->p2->print_cardesTaken();
+            return;
         }else{
             //we brake the while because the players finish there stack
             std::cout << "--------No one won in this turn---------" << std::endl;
+            return;
         }
         }
     }else{
-
+    std::cout << "--------There is no cards in players stack won---------" << std::endl;
     return;
     }
 }
