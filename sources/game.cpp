@@ -102,7 +102,7 @@ void Game::printWiner(){
         std::cout << "--------ERROR: THE GAME IS NOT OVER---------" << std::endl;
     }
 }
-// // prints all the turns played one line per turn (same format as game.printLastTurn())
+// prints all the turns played one line per turn (same format as game.printLastTurn())
 void Game::printLog(){
 
 }
