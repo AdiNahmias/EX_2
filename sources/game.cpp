@@ -70,6 +70,9 @@ void Game::division_card(Player p1, Player p2, vector<Card>& vec){
 Game::Game(Player &p1, Player &p2){
     this->p1 = &p1;
     this->p2 = &p2;
+    if(this->p1->getname() == this->p2->getname()){
+        throw std::runtime_error("ERROR: THERE IS ONE PLAYER");
+    }
     reset_num_cards();
     //reset th stack card
     reset_card_stack(this->vec);
@@ -118,8 +121,7 @@ void Game::printWiner(){
             std::cout << this->p2->getname()<< " is the WINNER of the game!! "  << std::endl; 
             return;
         }else{
-            std::cout<< "THERE IS NO WINNER : DRAW!"  << std::endl; 
-            return;
+            throw std::runtime_error("ERROR: THERE IS NO WINNER - DRAW!");
         }
     }else{
         std::cout << "--------THE GAME IS NOT OVER---------" << std::endl;
@@ -298,8 +300,9 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
 //--------------------------------------------------------------------------
     }//end else if we have the same cars
 }else{
-    std::cout << "--------ERROR: There is no cards in players stack---------" << std::endl;
-    return;
+
+    throw std::runtime_error("ERROR: There is no cards in players stack");
+    
     }
 }
    
