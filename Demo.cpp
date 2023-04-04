@@ -23,16 +23,16 @@ int main() {
   Player p2("Bob");
 
   Game game(p1,p2); 
-  game.playTurn();
-  game.playTurn();
-  game.printLastTurn();
+  //game.playTurn();
+  //game.playTurn();
+  //game.printLastTurn();
   
 
   
-  // game.playAll();
-  // game.printLog();
-  // game.printStats();
-  // game.printWiner();
+  game.playAll();
+  game.printLog();
+  game.printStats();
+  game.printWiner();
   
   
 
