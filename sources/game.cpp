@@ -236,7 +236,17 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         arr2[i] = card2;
         
         if((this->p1->stacksize()== 0) && (card1.getnum() == card2.getnum())){
-            std::cout << "--------ERROR: GAME OVER WITH DRAW---------" << std::endl;
+            std::cout << "--------GAME OVER WITH DRAW---------" << std::endl;
+            
+            //Each player takes the cards he played with in the last turn
+
+            for(size_t k = 0; k <= i; k++){
+                this->p1->set_card_to_cardesTaken(arr1[k]);
+            }
+            for(size_t k = 0; k <= i; k++){
+                this->p2->set_card_to_cardesTaken(arr2[k]);
+            }
+
             return;
         }
 //--------------------------------------------------------------------------

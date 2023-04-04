@@ -21,18 +21,33 @@ int main() {
   // Create two players with their names 
   Player p1("Alice");
   Player p2("Bob");
-
+  //test 1
+  // cout <<p1.stacksize()<<endl;
+  // cout <<p2.stacksize()<<endl;
+  // cout <<p1.cardesTaken()<<endl;
+  // cout <<p2.cardesTaken()<<endl;
+  //test 2
   Game game(p1,p2); 
+  // cout <<p1.stacksize()<<endl;
+  // cout <<p2.stacksize()<<endl;
+  // cout <<p1.cardesTaken()<<endl;
+  // cout <<p2.cardesTaken()<<endl;
+  //test 3
+  game.playAll();
+  game.printLog();
+  int sum = p1.stacksize() + p1.cardesTaken() + p2.stacksize() + p2.cardesTaken();
+  cout <<sum<<endl;
+
+
+
+
   //game.playTurn();
   //game.playTurn();
   //game.printLastTurn();
-  
-
-  
-  game.playAll();
-  game.printLog();
-  game.printStats();
-  game.printWiner();
+  // game.playAll();
+  // game.printLog();
+  // game.printStats();
+  // game.printWiner();
   
   
 
