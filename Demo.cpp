@@ -24,10 +24,10 @@ int main() {
 
 
   //test 1
-  cout <<p1.stacksize()<<endl;
+  //cout <<p1.stacksize()<<endl;
   // cout <<p2.stacksize()<<endl;
   // cout <<p1.cardesTaken()<<endl;
-  // cout <<p2.cardesTaken()<<endl;
+  //cout <<p2.cardesTaken()<<endl;
   //test 2
   Game game(p1,p2); 
   // cout <<p1.stacksize()<<endl;
