@@ -17,7 +17,7 @@ private:
 
 public:
     
-    Player(){}
+    //Player(){}
     Player(string player_name);
     int stacksize();
     int cardesTaken(); 

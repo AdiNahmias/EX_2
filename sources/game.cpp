@@ -70,9 +70,9 @@ void Game::division_card(Player p1, Player p2, vector<Card>& vec){
 Game::Game(Player &p1, Player &p2){
     this->p1 = &p1;
     this->p2 = &p2;
-    if(this->p1->getname() == this->p2->getname()){
-        throw std::runtime_error("ERROR: THERE IS ONE PLAYER");
-    }
+    // if(this->p1->getname() == this->p2->getname()){
+    //     throw std::runtime_error("ERROR: THERE IS ONE PLAYER");
+    // }
     reset_num_cards();
     //reset th stack card
     reset_card_stack(this->vec);
@@ -146,6 +146,10 @@ void Game::printStats(){
 }
 //play one turn
 void Game::playTurn(){
+
+if(this->p1->getname() == this->p2->getname()){
+        throw std::runtime_error("ERROR: THERE IS ONE PLAYER");
+}
 
 //check if the players have cards in his stack
 if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){

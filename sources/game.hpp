@@ -19,7 +19,7 @@ class Game{
         string num_cards[13];
 
     public:
-        Game(){}
+        //Game(){}
         Game(Player &p1,Player &p2);
         void reset_num_cards();
         void division_card(Player p1, Player p2, vector<Card>& vec);

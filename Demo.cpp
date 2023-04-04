@@ -65,7 +65,7 @@ int main() {
 
 
 
-   for (int i=0;i<5;i++) {
+  for (int i=0;i<5;i++) {
     game.playTurn();
    }
    game.printLastTurn(); // print the last turn stats. For example:
