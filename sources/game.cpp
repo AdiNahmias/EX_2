@@ -98,7 +98,7 @@ Game::Game(Player &p1, Player &p2){
 void Game::printLastTurn() {
     string str = "";
     str = this->turns.back();
-    std::cout << str << std::endl;
+    std::cout <<"LAST TURN : " << str << std::endl;
 }
 
 //playes the game untill the end
@@ -122,7 +122,7 @@ void Game::printWiner(){
             return;
         }
     }else{
-        std::cout << "--------ERROR: THE GAME IS NOT OVER---------" << std::endl;
+        std::cout << "--------THE GAME IS NOT OVER---------" << std::endl;
     }
 }
 //prints all the turns played one line per turn (same format as game.printLastTurn())
@@ -237,7 +237,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         
         if((this->p1->stacksize()== 0) && (card1.getnum() == card2.getnum())){
             std::cout << "--------GAME OVER WITH DRAW---------" << std::endl;
-            
+
             //Each player takes the cards he played with in the last turn
 
             for(size_t k = 0; k <= i; k++){

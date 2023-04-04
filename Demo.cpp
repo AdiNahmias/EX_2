@@ -33,10 +33,20 @@ int main() {
   // cout <<p1.cardesTaken()<<endl;
   // cout <<p2.cardesTaken()<<endl;
   //test 3
-  game.playAll();
-  game.printLog();
-  int sum = p1.stacksize() + p1.cardesTaken() + p2.stacksize() + p2.cardesTaken();
-  cout <<sum<<endl;
+  // game.playAll();
+  // game.printLog();
+  // int sum = p1.stacksize() + p1.cardesTaken() + p2.stacksize() + p2.cardesTaken();
+  // cout <<sum<<endl;
+  //test 4
+  for (int i = 0; i < 5; i++)
+    {
+        game.playTurn();
+    }
+    game.printLastTurn();
+    game.printLog();
+    game.printStats();
+    game.printWiner();
+
 
 
 
