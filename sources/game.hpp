@@ -21,6 +21,9 @@ class Game{
         vector<Card> vec;
         vector<string> turns;
         array<string, CARDS_NUM> num_cards;
+        int player_1_win=0;
+        int player_2_win=0;
+        int draw = 0;
 
     public:
         

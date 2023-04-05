@@ -113,17 +113,22 @@ void Game::playAll(){
 
 // prints the name of the winning player
 void Game::printWiner(){
+
     if(this->p1->stacksize() == 0 && this->p2->stacksize() == 0){
+
         if(this->p1->cardesTaken() > this->p2->cardesTaken()){
             std::cout << this->p1->getname()<< " is the WINNER of the game!! " << std::endl; 
             return;
+
         }if(this->p1->cardesTaken() < this->p2->cardesTaken()){
             std::cout << this->p2->getname()<< " is the WINNER of the game!! "  << std::endl; 
             return;
+
         }else{
             throw std::runtime_error("ERROR: THERE IS NO WINNER - DRAW!");
         }
     }else{
+
         std::cout << "--------THE GAME IS NOT OVER---------" << std::endl;
     }
 }
@@ -140,10 +145,22 @@ void Game::printLog(){
 // win rate, cards won, <other stats you want to print>
 // Also print the draw rate and amount of draws that happand.
 void Game::printStats(){
+    //How many cards each player wins
     std::cout << this->p1->getname()<< " has won " << this->p1->cardesTaken() << " cards" << std::endl;
     std::cout << this->p2->getname()<< " has won " << this->p2->cardesTaken() << " cards" << std::endl;
+    //win rate
+    std::cout << this->p1->getname()<< " won in " << this->player_1_win << " turns out of " << 
+    (this->player_1_win + this->player_2_win) << " turns" <<std::endl;
+
+    std::cout << this->p2->getname()<< " won in " << this->player_2_win << " turns out of " << 
+    (this->player_1_win + this->player_2_win) << " turns" <<std::endl;
+
+    std::cout << "During these " << ((this->player_1_win + this->player_2_win)) << " turns we got draw " 
+    << this->draw << " times"<<std::endl;
+
     std::cout <<"Each player has " << this->p1->stacksize() << " cards left" << std::endl;
 }
+
 //play one turn
 void Game::playTurn(){
 
@@ -177,6 +194,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         string turn = c1 + " , "+ c2 + " - " + c3;
         std::cout <<turn<< std::endl;
         this->turns.push_back(turn);
+        this->player_1_win++;
         return;
     }
 
@@ -194,6 +212,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         string turn = c1 + " , "+ c2 + " - " + c3;
         std::cout <<turn<< std::endl;
         this->turns.push_back(turn);
+        this->player_2_win++;
         return;
     }
 
@@ -204,7 +223,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         
         while((card1.getnum() == card2.getnum()) && (this->p1->stacksize()> 0)){
         std::cout << "--------p1 and p2 have the same card---------" << std::endl;
-
+        this->draw++;
         string c3 = "| DRAW! | - The players put a card face down";
         string turn = c1 + " , "+ c2 + " - " + c3;
         std::cout <<turn<< std::endl;
@@ -273,7 +292,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string turn = c1 + " , "+ c2 + " - " + c3;
             std::cout <<turn<< std::endl;
             this->turns.push_back(turn);
-
+            this->player_1_win++;
             //std::cout << "--------p1 cards Taken---------" << std::endl;
             //this->p1->print_cardesTaken();
             return;
@@ -295,7 +314,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string turn = c1 + " , "+ c2 + " - " + c3;
             std::cout <<turn<< std::endl;
             this->turns.push_back(turn);
-
+            this->player_2_win++;
             //std::cout << "--------p2 cards Taken---------" << std::endl;
             //this->p2->print_cardesTaken();
             return;

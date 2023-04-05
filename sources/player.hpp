@@ -14,6 +14,7 @@ private:
     string my_player;
     vector<Card> player_Stack;
     vector<Card> cardesTaken_stack;
+    
 
 public:
     
