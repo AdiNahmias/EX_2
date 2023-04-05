@@ -31,16 +31,16 @@ void Game::reset_num_cards(){
 }
 
 void Game::reset_card_stack(vector <Card> &vec){
-    for(int i=1; i<=13; i++){
+    for(size_t i=1; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Heart"));  
     }
-    for(int i = 1; i<=13; i++){
+    for(size_t i = 1; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Diamond"));   
     }
-    for(int i = 1; i<=13; i++){
+    for(size_t i = 1; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Spades"));
     }
-    for(int i = 1; i<=13; i++){
+    for(size_t i = 1; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Clubs"));
     }
 
@@ -56,7 +56,7 @@ void Game::shuffleCardStack(vector<Card>& vec) {
     shuffle(vec.begin(), vec.end(), g);
 }
 
-void Game::division_card(Player p1, Player p2, vector<Card>& vec){
+void Game::division_card(){
     for(size_t i= 0; i < vec.size(); i++){
         if(i % 2 == 0){
             this->p1->set_card_to_stack(vec[i]);
@@ -67,9 +67,9 @@ void Game::division_card(Player p1, Player p2, vector<Card>& vec){
 }
 
 //constructor
-Game::Game(Player &p1, Player &p2){
-    this->p1 = &p1;
-    this->p2 = &p2;
+Game::Game(Player &player_1, Player &player_2){
+    this->p1 = &player_1;
+    this->p2 = &player_2;
     // if(this->p1->getname() == this->p2->getname()){
     //     throw std::runtime_error("ERROR: THERE IS ONE PLAYER");
     // }
@@ -88,11 +88,11 @@ Game::Game(Player &p1, Player &p2){
     return;
     }
     //division cards
-    division_card(p1,p2,vec);
+    division_card();
     std::cout << "--------player 1 stack---------" << std::endl;
-    p1.print_card_stack_player();
+    this->p1->print_card_stack_player();
     std::cout << "--------player 2 stack---------" << std::endl;
-    p2.print_card_stack_player();
+    this->p2->print_card_stack_player();
 
  }
 

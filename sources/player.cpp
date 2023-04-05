@@ -19,13 +19,13 @@ Card Player::get_card_from_stack(){
     return c;
 }
 
-void Player::set_card_to_stack(Card c){
-    this->player_Stack.push_back(c);
+void Player::set_card_to_stack(Card card){
+    this->player_Stack.push_back(card);
 }
 
-void Player::set_card_to_cardesTaken(Card c){
+void Player::set_card_to_cardesTaken(Card card){
 
-    this->cardesTaken_stack.push_back(c);
+    this->cardesTaken_stack.push_back(card);
 }
 
 

@@ -6,6 +6,10 @@
 #include "stdio.h"
 using namespace std;
 #include <vector>
+#include <array>
+#include <string>
+
+const int CARDS_NUM = 13;
 
 
 
@@ -16,13 +20,13 @@ class Game{
         Player *p2;
         vector<Card> vec;
         vector<string> turns;
-        string num_cards[13];
+        array<string, CARDS_NUM> num_cards;
 
     public:
         //Game(){}
-        Game(Player &p1,Player &p2);
+        Game(Player &player_1,Player &player_2);
         void reset_num_cards();
-        void division_card(Player p1, Player p2, vector<Card>& vec);
+        void division_card();
         void print_card_stack(vector <Card> &vec);
         void reset_card_stack(vector <Card> &vec);
         void shuffleCardStack(vector<Card>& vec);
