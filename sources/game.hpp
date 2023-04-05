@@ -23,7 +23,7 @@ class Game{
         array<string, CARDS_NUM> num_cards;
 
     public:
-        //Game(){}
+        
         Game(Player &player_1,Player &player_2);
         void reset_num_cards();
         void division_card();
