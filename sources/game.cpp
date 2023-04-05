@@ -132,6 +132,8 @@ void Game::printWiner(){
         std::cout << "--------THE GAME IS NOT OVER---------" << std::endl;
     }
 }
+
+
 //prints all the turns played one line per turn (same format as game.printLastTurn())
 void Game::printLog(){
     string str = "";
@@ -141,6 +143,8 @@ void Game::printLog(){
     }
 
 }
+
+
 //for each player prints basic statistics: 
 // win rate, cards won, <other stats you want to print>
 // Also print the draw rate and amount of draws that happand.
