@@ -154,10 +154,10 @@ void Game::printStats(){
 
     std::cout << this->p2->getname()<< " won in " << this->player_2_win << " turns out of " << 
     (this->player_1_win + this->player_2_win) << " turns" <<std::endl;
-
+    //draw
     std::cout << "During these " << ((this->player_1_win + this->player_2_win)) << " turns we got draw " 
     << this->draw << " times"<<std::endl;
-
+    //how many cards each player have
     std::cout <<"Each player has " << this->p1->stacksize() << " cards left" << std::endl;
 }
 
