@@ -137,7 +137,7 @@ void Game::printLog(){
     string str = "";
     for(size_t i = 0; i < this->turns.size(); i++){
         str = turns[i];
-        std::cout << "OPEN CARD " << i+1 << " : " << str << std::endl;
+        std::cout << "TURN " << i+1 << " : " << str << std::endl;
     }
 
 }
@@ -220,14 +220,14 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
     
     //if the players put the same number card
     else{
-        
+        vector<string> draw_turn;
         while((card1.getnum() == card2.getnum()) && (this->p1->stacksize()> 0)){
         std::cout << "--------p1 and p2 have the same card---------" << std::endl;
         this->draw++;
-        string c3 = "| DRAW! | - The players put a card face down";
+        string c3 = "| DRAW! | - The players put a card face down and then - ";
         string turn = c1 + " , "+ c2 + " - " + c3;
         std::cout <<turn<< std::endl;
-        this->turns.push_back(turn);
+        draw_turn.push_back(turn);
         
         //put the same card in the arr----------------
         arr1[i] = card1;
@@ -291,7 +291,13 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string c3 = this->p1->getname()+" took the cards in this turn";
             string turn = c1 + " , "+ c2 + " - " + c3;
             std::cout <<turn<< std::endl;
-            this->turns.push_back(turn);
+            draw_turn.push_back(turn);
+            string temp = "";
+            for(size_t i = 0; i<draw_turn.size(); i++){
+                temp = temp + draw_turn[i];
+            }
+
+            this->turns.push_back(temp);
             this->player_1_win++;
             //std::cout << "--------p1 cards Taken---------" << std::endl;
             //this->p1->print_cardesTaken();
@@ -313,7 +319,12 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string c3 = this->p2->getname()+" took the cards in this turn";
             string turn = c1 + " , "+ c2 + " - " + c3;
             std::cout <<turn<< std::endl;
-            this->turns.push_back(turn);
+            draw_turn.push_back(turn);
+            string temp = "";
+            for(size_t i = 0; i < draw_turn.size(); i++){
+                temp = temp + draw_turn[i];
+            }
+            this->turns.push_back(temp);
             this->player_2_win++;
             //std::cout << "--------p2 cards Taken---------" << std::endl;
             //this->p2->print_cardesTaken();
