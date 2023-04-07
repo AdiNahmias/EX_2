@@ -226,10 +226,10 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
     //if the players put the same number card
     else{
         vector<string> draw_turn;
-        while((card1.getnum() == card2.getnum()) && (this->p1->stacksize()> 0)){
+        while(card1.getnum() == card2.getnum()){
         //std::cout << "--------p1 and p2 have the same card---------" << std::endl;
         this->draw++;
-        string c3 = "| DRAW! | - ";
+        string c3 = "| DRAW! | ";
         string turn = c1 + " , "+ c2 + " - " + c3;
         //std::cout <<turn<< std::endl;
         draw_turn.push_back(turn);
@@ -239,7 +239,12 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         arr2[i] = card2;
         i++;
 
+        if((this->p1->stacksize() == 0) && (this->p2->stacksize()==0) ){
+            break;
+        }
 
+        string cards_face_down = " - The players put a card face down. ";
+        draw_turn.push_back(cards_face_down);
         //put the close cards in the arr---------------
         //std::cout << "--------p1 and p2 put 2 close cards---------" << std::endl;
         arr1[i] = this->p1->get_card_from_stack();
@@ -248,6 +253,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         if((this->p1->stacksize() == 0) && (this->p2->stacksize()==0) ){
             break;
         }
+
 
         //again open cards----------------------------
         //if the 2 cards is the same we going back to the beginning of while
@@ -278,8 +284,8 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             }
             //put in temp the last turn if it is draw
             string temp = "";
-            for(size_t i = 0; i < draw_turn.size(); i++){
-                temp = temp + draw_turn[i];
+            for(size_t r = 0; r < draw_turn.size(); r++){
+                temp = temp + draw_turn[r];
             }
             this->turns.push_back(temp);
 
@@ -301,7 +307,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string c1 = this->p1->getname()+" : "+card1.getnum_string()+" of "+card1.getshape();
             string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
             string c3 = this->p1->getname()+" took the cards in this turn";
-            string turn = c1 + " , "+ c2 + " - " + c3;
+            string turn = "Finally -  " + c1 + " , "+ c2 + " - " + c3;
             //std::cout <<turn<< std::endl;
             draw_turn.push_back(turn);
             string temp = "";
@@ -329,7 +335,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string c1 = this->p1->getname()+" : "+card1.getnum_string()+" of "+card1.getshape();
             string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
             string c3 = this->p2->getname()+" took the cards in this turn";
-            string turn = c1 + " , "+ c2 + " - " + c3;
+            string turn = "Finally - " + c1 + " , "+ c2 + " - " + c3;
             //std::cout <<turn<< std::endl;
             draw_turn.push_back(turn);
             string temp = "";
