@@ -31,17 +31,20 @@ void Game::reset_num_cards(){
 }
 
 void Game::reset_card_stack(vector <Card> &vec){
-    
-    for(size_t i=1; i<=13; i++){
+    vec.push_back(Card(14,this->num_cards[0],"Heart"));
+    for(size_t i=2; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Heart"));  
     }
-    for(size_t i = 1; i<=13; i++){
+    vec.push_back(Card(14,this->num_cards[0],"Diamond"));
+    for(size_t i = 2; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Diamond"));   
     }
-    for(size_t i = 1; i<=13; i++){
+    vec.push_back(Card(14,this->num_cards[0],"Spades"));
+    for(size_t i = 2; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Spades"));
     }
-    for(size_t i = 1; i<=13; i++){
+    vec.push_back(Card(14,this->num_cards[0],"Clubs"));
+    for(size_t i = 2; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Clubs"));
     }
 
@@ -75,15 +78,19 @@ Game::Game(Player &player_1, Player &player_2){
     // if(this->p1->getname() == this->p2->getname()){
     //     throw std::runtime_error("ERROR: THERE IS ONE PLAYER");
     // }
+
+    
     reset_num_cards();
+
     //reset the stack card
     reset_card_stack(this->vec);
-    //std::cout << "--------before shuffle---------" << std::endl;
-    //print_card_stack(this->vec);
+    // std::cout << "--------before shuffle---------" << std::endl;
+    // print_card_stack(this->vec);
+
     //shuffle cards in the Stack
     shuffleCardStack(this->vec);
-    //std::cout << "--------after shuffle---------" << std::endl;
-    //print_card_stack(this->vec);
+    // std::cout << "--------after shuffle---------" << std::endl;
+    // print_card_stack(this->vec);
 
     if (vec.size() < 52) {
     std::cout << "Error: Not enough cards in the deck\n";
@@ -91,10 +98,10 @@ Game::Game(Player &player_1, Player &player_2){
     }
     //division cards
     division_card();
-    std::cout << "--------player 1 stack---------" << std::endl;
-    this->p1->print_card_stack_player();
-    std::cout << "--------player 2 stack---------" << std::endl;
-    this->p2->print_card_stack_player();
+    // std::cout << "--------player 1 stack---------" << std::endl;
+    // this->p1->print_card_stack_player();
+    // std::cout << "--------player 2 stack---------" << std::endl;
+    // this->p2->print_card_stack_player();
 
  }
 
@@ -186,19 +193,43 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
 
     string c1 = this->p1->getname()+" : "+card1.getnum_string()+" of "+card1.getshape();
     string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
-    
+
+//-------------------------------------------------------------------------
+//if the cards are ace and 2
+
+    if((card1.getnum() == 2) && (card2.getnum() == 14)){
+        this->p1->set_card_to_cardesTaken(card1);
+        this->p1->set_card_to_cardesTaken(card2);
+
+        string c3 = this->p1->getname()+" took the cards in this turn";
+        string turn = c1 + " , "+ c2 + " - " + c3;
+        this->turns.push_back(turn);
+        this->player_1_win++;
+        return;
+
+    }
+    if((card1.getnum() == 14) && (card2.getnum() == 2)){
+        this->p2->set_card_to_cardesTaken(card1);
+        this->p2->set_card_to_cardesTaken(card2);
+
+        string c3 = this->p2->getname()+" took the cards in this turn";
+        string turn = c1 + " , "+ c2 + " - " + c3;
+        this->turns.push_back(turn);
+        this->player_2_win++;
+        return;
+
+    }
+
 //--------------------------------------------------------------------------
     if(card1.getnum() > card2.getnum()){
         this->p1->set_card_to_cardesTaken(card1);
         this->p1->set_card_to_cardesTaken(card2);
 
-        //std::cout << "--------p1 won in this turn---------" << std::endl;
         //std::cout << "--------p1 cards Taken---------" << std::endl;
         //this->p1->print_cardesTaken();
 
         string c3 = this->p1->getname()+" took the cards in this turn";
         string turn = c1 + " , "+ c2 + " - " + c3;
-        //std::cout <<turn<< std::endl;
         this->turns.push_back(turn);
         this->player_1_win++;
         return;
@@ -210,13 +241,11 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         this->p2->set_card_to_cardesTaken(card1);
         this->p2->set_card_to_cardesTaken(card2);
 
-        //std::cout << "--------p2 won in this turn---------" << std::endl;
         //std::cout << "--------p2 cards Taken---------" << std::endl;
         //this->p2->print_cardesTaken();
 
         string c3 = this->p2->getname()+" took the cards in this turn";
         string turn = c1 + " , "+ c2 + " - " + c3;
-        //std::cout <<turn<< std::endl;
         this->turns.push_back(turn);
         this->player_2_win++;
         return;
@@ -230,11 +259,10 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         
         vector<string> draw_turn;
         while(card1.getnum() == card2.getnum()){
-        //std::cout << "--------p1 and p2 have the same card---------" << std::endl;
+        
         this->draw++;
         string c3 = "| DRAW! | ";
         string turn = c1 + " , "+ c2 + " - " + c3;
-        //std::cout <<turn<< std::endl;
         draw_turn.push_back(turn);
         
         //put the same card in the arr----------------
@@ -246,9 +274,11 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
           
             break;
         }
+
         i++;
         string cards_face_down = " - The players put a card face down. ";
         draw_turn.push_back(cards_face_down);
+
         //put the close cards in the arr---------------
         //std::cout << "--------p1 and p2 put 2 close cards---------" << std::endl;
         arr1[i] = this->p1->get_card_from_stack();
@@ -272,9 +302,13 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
 
 //--------------------------------------------------------------------------
         //the 2 cards are not the same
+        if(card1.getnum() != card2.getnum()){
         arr1[i] = card1;
         arr2[i] = card2;
-        
+        }
+
+//--------------------------------------------------------------------------
+
         if((this->p1->stacksize()== 0) && (card1.getnum() == card2.getnum())){
             std::cout << "--------GAME OVER WITH DRAW---------" << std::endl;
 
@@ -297,10 +331,11 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             return;
         }
 //--------------------------------------------------------------------------
-        if(card1.getnum() > card2.getnum()){
 
-            //player1 takes all the cards in the 2 arr
-            //std::cout << "--------p1 won in this turn---------" << std::endl;
+        //if the cards are ace and 2
+        
+        if((card1.getnum() == 2) && (card2.getnum() == 14)){
+
             for(size_t k = 0; k <= i; k++){
                 this->p1->set_card_to_cardesTaken(arr1[k]);
             }
@@ -312,7 +347,64 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
             string c3 = this->p1->getname()+" took the cards in this turn";
             string turn = "Finally -  " + c1 + " , "+ c2 + " - " + c3;
-            //std::cout <<turn<< std::endl;
+        
+            draw_turn.push_back(turn);
+            string temp = "";
+            for(size_t i = 0; i<draw_turn.size(); i++){
+                temp = temp + draw_turn[i];
+            }
+
+            this->turns.push_back(temp);
+            this->player_1_win++;
+          
+            return;  
+
+        }
+
+        //----------------------------------------------------
+
+
+        if((card1.getnum() == 14) && (card2.getnum() == 2)){
+
+            for(size_t k = 0; k <= i; k++){
+                this->p2->set_card_to_cardesTaken(arr1[k]);
+            }
+            for(size_t k = 0; k <= i; k++){
+                this->p2->set_card_to_cardesTaken(arr2[k]);
+            }
+
+            string c1 = this->p1->getname()+" : "+card1.getnum_string()+" of "+card1.getshape();
+            string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
+            string c3 = this->p2->getname()+" took the cards in this turn";
+            string turn = "Finally - " + c1 + " , "+ c2 + " - " + c3;
+           
+            draw_turn.push_back(turn);
+            string temp = "";
+            for(size_t i = 0; i < draw_turn.size(); i++){
+                temp = temp + draw_turn[i];
+            }
+            this->turns.push_back(temp);
+            this->player_2_win++;
+          
+            return;
+            
+
+        }
+//--------------------------------------------------------------------------
+        if(card1.getnum() > card2.getnum()){
+
+            //player1 takes all the cards in the 2 arr
+            for(size_t k = 0; k <= i; k++){
+                this->p1->set_card_to_cardesTaken(arr1[k]);
+            }
+            for(size_t k = 0; k <= i; k++){
+                this->p1->set_card_to_cardesTaken(arr2[k]);
+            }
+
+            string c1 = this->p1->getname()+" : "+card1.getnum_string()+" of "+card1.getshape();
+            string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
+            string c3 = this->p1->getname()+" took the cards in this turn";
+            string turn = "Finally -  " + c1 + " , "+ c2 + " - " + c3;
             draw_turn.push_back(turn);
             string temp = "";
             for(size_t i = 0; i<draw_turn.size(); i++){
@@ -328,7 +420,6 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         }if(card1.getnum() < card2.getnum()){
 
             //player2 takes all the cards in the 2 arr
-            //std::cout << "--------p2 won in this turn---------" << std::endl;
             for(size_t k = 0; k <= i; k++){
                 this->p2->set_card_to_cardesTaken(arr1[k]);
             }
@@ -340,7 +431,6 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             string c2 = this->p2->getname()+" : "+card2.getnum_string()+" of "+card2.getshape();
             string c3 = this->p2->getname()+" took the cards in this turn";
             string turn = "Finally - " + c1 + " , "+ c2 + " - " + c3;
-            //std::cout <<turn<< std::endl;
             draw_turn.push_back(turn);
             string temp = "";
             for(size_t i = 0; i < draw_turn.size(); i++){
