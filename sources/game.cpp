@@ -31,6 +31,7 @@ void Game::reset_num_cards(){
 }
 
 void Game::reset_card_stack(vector <Card> &vec){
+    
     for(size_t i=1; i<=13; i++){
         vec.push_back(Card(i,this->num_cards[i-1],"Heart"));  
     }
@@ -90,10 +91,10 @@ Game::Game(Player &player_1, Player &player_2){
     }
     //division cards
     division_card();
-    //std::cout << "--------player 1 stack---------" << std::endl;
-    //this->p1->print_card_stack_player();
-    //std::cout << "--------player 2 stack---------" << std::endl;
-    //this->p2->print_card_stack_player();
+    std::cout << "--------player 1 stack---------" << std::endl;
+    this->p1->print_card_stack_player();
+    std::cout << "--------player 2 stack---------" << std::endl;
+    this->p2->print_card_stack_player();
 
  }
 
