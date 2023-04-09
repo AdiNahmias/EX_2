@@ -278,7 +278,6 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             std::cout << "--------GAME OVER WITH DRAW---------" << std::endl;
 
             //Each player takes the cards he played with in the last turn
-            // if(draw_bool){
             for(size_t k = 0; k <= i; k++){
                 this->p1->set_card_to_cardesTaken(arr1[k]);
             }
