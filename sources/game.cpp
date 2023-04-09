@@ -90,10 +90,10 @@ Game::Game(Player &player_1, Player &player_2){
     }
     //division cards
     division_card();
-    std::cout << "--------player 1 stack---------" << std::endl;
-    this->p1->print_card_stack_player();
-    std::cout << "--------player 2 stack---------" << std::endl;
-    this->p2->print_card_stack_player();
+    //std::cout << "--------player 1 stack---------" << std::endl;
+    //this->p1->print_card_stack_player();
+    //std::cout << "--------player 2 stack---------" << std::endl;
+    //this->p2->print_card_stack_player();
 
  }
 
