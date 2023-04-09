@@ -178,7 +178,7 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
 
     Card arr1[26];
     Card arr2[26];
-    int i = 0;
+    
 
     Card card1 = this->p1->get_card_from_stack();
     Card card2 = this->p2->get_card_from_stack();
@@ -225,6 +225,8 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
     
     //if the players put the same number card
     else{
+        int i = 0;
+        
         vector<string> draw_turn;
         while(card1.getnum() == card2.getnum()){
         //std::cout << "--------p1 and p2 have the same card---------" << std::endl;
@@ -237,12 +239,13 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
         //put the same card in the arr----------------
         arr1[i] = card1;
         arr2[i] = card2;
-        i++;
-
+        
+        
         if((this->p1->stacksize() == 0) && (this->p2->stacksize()==0) ){
+          
             break;
         }
-
+        i++;
         string cards_face_down = " - The players put a card face down. ";
         draw_turn.push_back(cards_face_down);
         //put the close cards in the arr---------------
@@ -275,13 +278,14 @@ if((this->p1->stacksize() > 0) && (this->p2->stacksize() >0) ){
             std::cout << "--------GAME OVER WITH DRAW---------" << std::endl;
 
             //Each player takes the cards he played with in the last turn
-
+            // if(draw_bool){
             for(size_t k = 0; k <= i; k++){
                 this->p1->set_card_to_cardesTaken(arr1[k]);
             }
             for(size_t k = 0; k <= i; k++){
                 this->p2->set_card_to_cardesTaken(arr2[k]);
             }
+            
             //put in temp the last turn if it is draw
             string temp = "";
             for(size_t r = 0; r < draw_turn.size(); r++){
